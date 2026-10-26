@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "diabetes-paper-reproduction"
+version = "0.1.0"
+description = "Reproducible CGM parameter-estimation and optimal-control pipeline for Blank.pdf"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy>=1.24,<2",
+  "scipy>=1.10,<2",
+  "pandas>=2.0,<3",
+  "openpyxl>=3.1,<4",
+  "matplotlib>=3.7,<4",
+  "seaborn>=0.13,<1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
