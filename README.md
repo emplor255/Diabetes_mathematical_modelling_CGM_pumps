@@ -17,8 +17,16 @@ converted to insulin units.
 The Excel workbooks and `Blank.pdf` are intentionally excluded from this repository.
 Place your authorized copies of the two workbooks listed above in the project root
 before running the analysis. Generated `outputs/` and `outputs_*` directories are
-also excluded; recreate results with the commands below. References to manuscript
-files under `outputs/manuscript/` describe local artifacts, not bundled files.
+versioned at the project owner's request, including result spreadsheets and
+manuscript artifacts. Recreate results with the commands below.
+
+## Additional individual-record experiments
+
+`extra_experiment/` contains a separate full-record fitting and research-control
+experiment for the two CSV records from `emplor255/Diabetes-Control`. It preserves
+recorded meal and bolus events, and does not alter the Hall2018 results or core
+model. See `extra_experiment/README.md` for the explicit model extension, input
+assumptions, limitations, and reproduction commands.
 
 ## Run
 

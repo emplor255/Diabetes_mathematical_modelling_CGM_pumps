@@ -1,0 +1,334 @@
+status,meal_type,relative_min,participants,events
+Healthy,Bar,-30.0,20,32
+Healthy,Bar,-25.0,20,32
+Healthy,Bar,-20.0,20,32
+Healthy,Bar,-15.0,19,31
+Healthy,Bar,-10.0,19,31
+Healthy,Bar,-5.0,20,30
+Healthy,Bar,0.0,20,32
+Healthy,Bar,5.0,20,31
+Healthy,Bar,10.0,20,31
+Healthy,Bar,15.0,20,32
+Healthy,Bar,20.0,20,31
+Healthy,Bar,25.0,20,31
+Healthy,Bar,30.0,20,31
+Healthy,Bar,35.0,20,32
+Healthy,Bar,40.0,20,31
+Healthy,Bar,45.0,19,31
+Healthy,Bar,50.0,20,32
+Healthy,Bar,55.0,20,29
+Healthy,Bar,60.0,20,30
+Healthy,Bar,65.0,20,31
+Healthy,Bar,70.0,20,32
+Healthy,Bar,75.0,20,32
+Healthy,Bar,80.0,20,32
+Healthy,Bar,85.0,20,32
+Healthy,Bar,90.0,20,32
+Healthy,Bar,95.0,20,32
+Healthy,Bar,100.0,20,32
+Healthy,Bar,105.0,20,32
+Healthy,Bar,110.0,20,31
+Healthy,Bar,115.0,20,31
+Healthy,Bar,120.0,20,31
+Healthy,Bar,125.0,20,31
+Healthy,Bar,130.0,20,32
+Healthy,Bar,135.0,20,32
+Healthy,Bar,140.0,20,31
+Healthy,Bar,145.0,20,32
+Healthy,Bar,150.0,20,32
+Healthy,CF,-30.0,19,33
+Healthy,CF,-25.0,19,33
+Healthy,CF,-20.0,19,33
+Healthy,CF,-15.0,19,33
+Healthy,CF,-10.0,19,32
+Healthy,CF,-5.0,19,33
+Healthy,CF,0.0,19,32
+Healthy,CF,5.0,19,32
+Healthy,CF,10.0,19,33
+Healthy,CF,15.0,19,32
+Healthy,CF,20.0,19,33
+Healthy,CF,25.0,19,33
+Healthy,CF,30.0,19,33
+Healthy,CF,35.0,19,33
+Healthy,CF,40.0,19,33
+Healthy,CF,45.0,19,32
+Healthy,CF,50.0,19,33
+Healthy,CF,55.0,19,32
+Healthy,CF,60.0,19,33
+Healthy,CF,65.0,19,32
+Healthy,CF,70.0,19,32
+Healthy,CF,75.0,19,33
+Healthy,CF,80.0,19,32
+Healthy,CF,85.0,19,32
+Healthy,CF,90.0,19,32
+Healthy,CF,95.0,19,32
+Healthy,CF,100.0,19,32
+Healthy,CF,105.0,19,32
+Healthy,CF,110.0,19,32
+Healthy,CF,115.0,19,32
+Healthy,CF,120.0,19,32
+Healthy,CF,125.0,19,32
+Healthy,CF,130.0,19,32
+Healthy,CF,135.0,18,30
+Healthy,CF,140.0,19,32
+Healthy,CF,145.0,19,31
+Healthy,CF,150.0,19,33
+Healthy,PB,-30.0,20,36
+Healthy,PB,-25.0,20,36
+Healthy,PB,-20.0,20,35
+Healthy,PB,-15.0,19,34
+Healthy,PB,-10.0,19,34
+Healthy,PB,-5.0,20,36
+Healthy,PB,0.0,20,36
+Healthy,PB,5.0,20,36
+Healthy,PB,10.0,20,36
+Healthy,PB,15.0,20,36
+Healthy,PB,20.0,20,33
+Healthy,PB,25.0,19,34
+Healthy,PB,30.0,20,35
+Healthy,PB,35.0,19,33
+Healthy,PB,40.0,20,35
+Healthy,PB,45.0,20,34
+Healthy,PB,50.0,19,34
+Healthy,PB,55.0,19,34
+Healthy,PB,60.0,20,34
+Healthy,PB,65.0,20,35
+Healthy,PB,70.0,20,35
+Healthy,PB,75.0,20,36
+Healthy,PB,80.0,20,36
+Healthy,PB,85.0,20,36
+Healthy,PB,90.0,20,36
+Healthy,PB,95.0,20,36
+Healthy,PB,100.0,20,36
+Healthy,PB,105.0,20,36
+Healthy,PB,110.0,20,36
+Healthy,PB,115.0,20,36
+Healthy,PB,120.0,20,36
+Healthy,PB,125.0,20,36
+Healthy,PB,130.0,20,36
+Healthy,PB,135.0,20,36
+Healthy,PB,140.0,20,36
+Healthy,PB,145.0,19,35
+Healthy,PB,150.0,20,36
+Prediabetes,Bar,-30.0,7,11
+Prediabetes,Bar,-25.0,7,11
+Prediabetes,Bar,-20.0,7,10
+Prediabetes,Bar,-15.0,7,11
+Prediabetes,Bar,-10.0,6,9
+Prediabetes,Bar,-5.0,7,10
+Prediabetes,Bar,0.0,7,10
+Prediabetes,Bar,5.0,7,11
+Prediabetes,Bar,10.0,7,11
+Prediabetes,Bar,15.0,7,10
+Prediabetes,Bar,20.0,7,11
+Prediabetes,Bar,25.0,7,11
+Prediabetes,Bar,30.0,7,10
+Prediabetes,Bar,35.0,7,11
+Prediabetes,Bar,40.0,7,11
+Prediabetes,Bar,45.0,7,11
+Prediabetes,Bar,50.0,7,11
+Prediabetes,Bar,55.0,7,11
+Prediabetes,Bar,60.0,7,11
+Prediabetes,Bar,65.0,7,11
+Prediabetes,Bar,70.0,7,11
+Prediabetes,Bar,75.0,7,11
+Prediabetes,Bar,80.0,7,11
+Prediabetes,Bar,85.0,7,11
+Prediabetes,Bar,90.0,7,10
+Prediabetes,Bar,95.0,7,10
+Prediabetes,Bar,100.0,7,11
+Prediabetes,Bar,105.0,7,10
+Prediabetes,Bar,110.0,7,10
+Prediabetes,Bar,115.0,7,10
+Prediabetes,Bar,120.0,7,10
+Prediabetes,Bar,125.0,7,11
+Prediabetes,Bar,130.0,7,11
+Prediabetes,Bar,135.0,7,11
+Prediabetes,Bar,140.0,7,11
+Prediabetes,Bar,145.0,7,11
+Prediabetes,Bar,150.0,7,11
+Prediabetes,CF,-30.0,7,10
+Prediabetes,CF,-25.0,7,10
+Prediabetes,CF,-20.0,5,8
+Prediabetes,CF,-15.0,6,9
+Prediabetes,CF,-10.0,6,9
+Prediabetes,CF,-5.0,7,10
+Prediabetes,CF,0.0,7,10
+Prediabetes,CF,5.0,7,10
+Prediabetes,CF,10.0,7,10
+Prediabetes,CF,15.0,6,9
+Prediabetes,CF,20.0,7,10
+Prediabetes,CF,25.0,7,10
+Prediabetes,CF,30.0,7,10
+Prediabetes,CF,35.0,6,9
+Prediabetes,CF,40.0,7,10
+Prediabetes,CF,45.0,6,9
+Prediabetes,CF,50.0,7,10
+Prediabetes,CF,55.0,7,10
+Prediabetes,CF,60.0,7,10
+Prediabetes,CF,65.0,7,10
+Prediabetes,CF,70.0,7,10
+Prediabetes,CF,75.0,7,10
+Prediabetes,CF,80.0,7,10
+Prediabetes,CF,85.0,7,10
+Prediabetes,CF,90.0,7,10
+Prediabetes,CF,95.0,7,10
+Prediabetes,CF,100.0,7,10
+Prediabetes,CF,105.0,7,10
+Prediabetes,CF,110.0,7,10
+Prediabetes,CF,115.0,7,10
+Prediabetes,CF,120.0,7,10
+Prediabetes,CF,125.0,7,10
+Prediabetes,CF,130.0,7,10
+Prediabetes,CF,135.0,7,10
+Prediabetes,CF,140.0,7,10
+Prediabetes,CF,145.0,7,10
+Prediabetes,CF,150.0,7,10
+Prediabetes,PB,-30.0,7,11
+Prediabetes,PB,-25.0,7,11
+Prediabetes,PB,-20.0,7,11
+Prediabetes,PB,-15.0,7,11
+Prediabetes,PB,-10.0,7,11
+Prediabetes,PB,-5.0,7,11
+Prediabetes,PB,0.0,7,11
+Prediabetes,PB,5.0,7,11
+Prediabetes,PB,10.0,7,11
+Prediabetes,PB,15.0,7,11
+Prediabetes,PB,20.0,7,11
+Prediabetes,PB,25.0,7,11
+Prediabetes,PB,30.0,7,11
+Prediabetes,PB,35.0,7,11
+Prediabetes,PB,40.0,7,10
+Prediabetes,PB,45.0,7,11
+Prediabetes,PB,50.0,7,11
+Prediabetes,PB,55.0,7,11
+Prediabetes,PB,60.0,7,11
+Prediabetes,PB,65.0,7,11
+Prediabetes,PB,70.0,7,11
+Prediabetes,PB,75.0,6,10
+Prediabetes,PB,80.0,6,10
+Prediabetes,PB,85.0,7,11
+Prediabetes,PB,90.0,6,10
+Prediabetes,PB,95.0,6,10
+Prediabetes,PB,100.0,7,11
+Prediabetes,PB,105.0,7,11
+Prediabetes,PB,110.0,7,10
+Prediabetes,PB,115.0,7,11
+Prediabetes,PB,120.0,7,10
+Prediabetes,PB,125.0,7,11
+Prediabetes,PB,130.0,7,11
+Prediabetes,PB,135.0,7,10
+Prediabetes,PB,140.0,7,10
+Prediabetes,PB,145.0,7,10
+Prediabetes,PB,150.0,7,11
+Type 2 diabetes,Bar,-30.0,3,4
+Type 2 diabetes,Bar,-25.0,3,4
+Type 2 diabetes,Bar,-20.0,3,4
+Type 2 diabetes,Bar,-15.0,3,4
+Type 2 diabetes,Bar,-10.0,3,4
+Type 2 diabetes,Bar,-5.0,3,4
+Type 2 diabetes,Bar,0.0,3,4
+Type 2 diabetes,Bar,5.0,3,4
+Type 2 diabetes,Bar,10.0,3,4
+Type 2 diabetes,Bar,15.0,3,4
+Type 2 diabetes,Bar,20.0,3,4
+Type 2 diabetes,Bar,25.0,3,4
+Type 2 diabetes,Bar,30.0,3,4
+Type 2 diabetes,Bar,35.0,3,4
+Type 2 diabetes,Bar,40.0,3,4
+Type 2 diabetes,Bar,45.0,3,4
+Type 2 diabetes,Bar,50.0,3,4
+Type 2 diabetes,Bar,55.0,3,4
+Type 2 diabetes,Bar,60.0,3,4
+Type 2 diabetes,Bar,65.0,3,4
+Type 2 diabetes,Bar,70.0,3,4
+Type 2 diabetes,Bar,75.0,3,4
+Type 2 diabetes,Bar,80.0,2,3
+Type 2 diabetes,Bar,85.0,3,4
+Type 2 diabetes,Bar,90.0,3,4
+Type 2 diabetes,Bar,95.0,3,4
+Type 2 diabetes,Bar,100.0,2,3
+Type 2 diabetes,Bar,105.0,2,3
+Type 2 diabetes,Bar,110.0,3,4
+Type 2 diabetes,Bar,115.0,2,3
+Type 2 diabetes,Bar,120.0,3,4
+Type 2 diabetes,Bar,125.0,3,4
+Type 2 diabetes,Bar,130.0,3,4
+Type 2 diabetes,Bar,135.0,3,4
+Type 2 diabetes,Bar,140.0,3,4
+Type 2 diabetes,Bar,145.0,3,4
+Type 2 diabetes,Bar,150.0,3,4
+Type 2 diabetes,CF,-30.0,3,6
+Type 2 diabetes,CF,-25.0,3,6
+Type 2 diabetes,CF,-20.0,3,5
+Type 2 diabetes,CF,-15.0,3,6
+Type 2 diabetes,CF,-10.0,3,6
+Type 2 diabetes,CF,-5.0,3,5
+Type 2 diabetes,CF,0.0,3,6
+Type 2 diabetes,CF,5.0,3,6
+Type 2 diabetes,CF,10.0,3,6
+Type 2 diabetes,CF,15.0,3,5
+Type 2 diabetes,CF,20.0,3,6
+Type 2 diabetes,CF,25.0,3,6
+Type 2 diabetes,CF,30.0,3,5
+Type 2 diabetes,CF,35.0,3,6
+Type 2 diabetes,CF,40.0,3,6
+Type 2 diabetes,CF,45.0,3,5
+Type 2 diabetes,CF,50.0,3,5
+Type 2 diabetes,CF,55.0,3,6
+Type 2 diabetes,CF,60.0,3,6
+Type 2 diabetes,CF,65.0,3,5
+Type 2 diabetes,CF,70.0,3,5
+Type 2 diabetes,CF,75.0,3,5
+Type 2 diabetes,CF,80.0,3,6
+Type 2 diabetes,CF,85.0,3,5
+Type 2 diabetes,CF,90.0,3,5
+Type 2 diabetes,CF,95.0,3,6
+Type 2 diabetes,CF,100.0,3,5
+Type 2 diabetes,CF,105.0,3,6
+Type 2 diabetes,CF,110.0,3,6
+Type 2 diabetes,CF,115.0,3,6
+Type 2 diabetes,CF,120.0,3,6
+Type 2 diabetes,CF,125.0,3,6
+Type 2 diabetes,CF,130.0,3,6
+Type 2 diabetes,CF,135.0,3,6
+Type 2 diabetes,CF,140.0,3,6
+Type 2 diabetes,CF,145.0,3,5
+Type 2 diabetes,CF,150.0,3,6
+Type 2 diabetes,PB,-30.0,3,4
+Type 2 diabetes,PB,-25.0,3,4
+Type 2 diabetes,PB,-20.0,2,3
+Type 2 diabetes,PB,-15.0,3,4
+Type 2 diabetes,PB,-10.0,3,4
+Type 2 diabetes,PB,-5.0,3,4
+Type 2 diabetes,PB,0.0,3,4
+Type 2 diabetes,PB,5.0,3,4
+Type 2 diabetes,PB,10.0,3,4
+Type 2 diabetes,PB,15.0,3,4
+Type 2 diabetes,PB,20.0,3,4
+Type 2 diabetes,PB,25.0,3,4
+Type 2 diabetes,PB,30.0,3,4
+Type 2 diabetes,PB,35.0,3,4
+Type 2 diabetes,PB,40.0,3,4
+Type 2 diabetes,PB,45.0,3,4
+Type 2 diabetes,PB,50.0,3,4
+Type 2 diabetes,PB,55.0,3,4
+Type 2 diabetes,PB,60.0,3,4
+Type 2 diabetes,PB,65.0,3,4
+Type 2 diabetes,PB,70.0,3,4
+Type 2 diabetes,PB,75.0,3,4
+Type 2 diabetes,PB,80.0,3,4
+Type 2 diabetes,PB,85.0,2,2
+Type 2 diabetes,PB,90.0,3,3
+Type 2 diabetes,PB,95.0,3,3
+Type 2 diabetes,PB,100.0,3,4
+Type 2 diabetes,PB,105.0,3,4
+Type 2 diabetes,PB,110.0,3,4
+Type 2 diabetes,PB,115.0,3,4
+Type 2 diabetes,PB,120.0,3,4
+Type 2 diabetes,PB,125.0,3,4
+Type 2 diabetes,PB,130.0,3,3
+Type 2 diabetes,PB,135.0,3,4
+Type 2 diabetes,PB,140.0,3,4
+Type 2 diabetes,PB,145.0,3,4
+Type 2 diabetes,PB,150.0,3,4

@@ -9,12 +9,14 @@ build/
 dist/
 .vscode/
 
-# Research data, manuscript source PDF, and generated results stay local
+# Source workbooks and manuscript source PDF stay local.
+# Generated results are versioned at the project owner's request.
 *.xlsx
 *.xls
 /Blank.pdf
-/outputs/
-/outputs_*/
+!/outputs/**/*.xlsx
+!/outputs_*/**/*.xlsx
+!/extra_experiment/results/**/*.xlsx
 
 # Local credentials and environment configuration
 .env

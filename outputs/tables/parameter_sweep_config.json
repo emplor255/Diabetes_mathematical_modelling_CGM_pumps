@@ -1,0 +1,50 @@
+{
+  "reference_id": "2133-020",
+  "reference_status": "Healthy",
+  "reference_selection": "Nearest participant RMSE to cohort median; ties by ascending natural ID",
+  "reference_participant_rmse_mg_dl": 9.147467359758055,
+  "nominal_coefficients": {
+    "alpha": 2.391936726501309,
+    "beta0": 0.0001000492634065,
+    "beta1": 0.434645569617458,
+    "gamma": 9.98028268568356,
+    "delta": 2.0774354540543385,
+    "beta2": 264.8692992037898
+  },
+  "model_config": {
+    "k_half_mg_dl": 120.0,
+    "basal_insulin": 1.0,
+    "target_lower_mg_dl": 70.0,
+    "target_upper_mg_dl": 110.0
+  },
+  "sweep_config": {
+    "factors": [
+      0.5,
+      0.75,
+      1,
+      1.25,
+      1.5
+    ],
+    "horizon_hours": 12,
+    "step_minutes": 1
+  },
+  "initial_state_before_absorption": [
+    0.0,
+    76.0,
+    1.3753315912140924
+  ],
+  "meal_amplitude": 59.83215734468564,
+  "absorption_delay_min": 28.541639008984763,
+  "control_intensity": 0.0,
+  "beta2_policy": "Derived once at the nominal state, then held fixed except in the beta2 panel; not recomputed for other perturbations",
+  "initial_state_policy": "Same full initial state for every scenario; not re-equilibrated after changing a coefficient",
+  "interpretation": "Deterministic one-at-a-time model exploration, not uncertainty intervals, a global sensitivity study, or an intervention trial",
+  "bounds_policy": "No clipping to fitting bounds; outside-bound cases flagged. beta2 has no independently fitted bounds",
+  "time_scope": "Fitting windows extend to 150 min; simulations beyond 150 min are unvalidated extrapolations",
+  "stability_scope": "Jacobian eigenvalues refer to the positive no-meal equilibrium; complex eigenvalues do not prove sustained oscillations",
+  "solver": {
+    "rtol": 3e-05,
+    "atol": 1e-07,
+    "max_step_minutes": 2.5
+  }
+}

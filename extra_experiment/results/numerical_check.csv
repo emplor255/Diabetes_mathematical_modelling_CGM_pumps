@@ -1,0 +1,5 @@
+case,scenario,max_BG_difference_mg_dl
+case_01,Recorded boluses only,1.109445190650149e-05
+case_01,Recorded boluses + optimized unitless control,1.1913851565736877e-05
+case_02,Recorded boluses only,0.00011292796865802757
+case_02,Recorded boluses + optimized unitless control,0.00011290254319362703

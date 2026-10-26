@@ -1,0 +1,83 @@
+{
+  "case_01": {
+    "raw_rows": 202,
+    "unique_times": 201,
+    "duplicate_rows_collapsed": 1,
+    "duration_min": 1075.0,
+    "largest_gap_min": 60.0,
+    "recorded_meal_events": 5,
+    "recorded_bolus_events": 26,
+    "total_eating_native_units": 196.0,
+    "total_bolus_native_units": 28.4,
+    "noise_counts_raw": {
+      "Y": 174,
+      "P": 28
+    },
+    "reference_glucose": 79.0,
+    "reference_rule": "median in 30 min before first meal",
+    "premeal_baseline_points": 6,
+    "observations_below_70": 0,
+    "bg_unit_assumption": "mg/dL, pending source-owner confirmation",
+    "input_units": "native CSV amounts; no grams/U conversion asserted",
+    "noise_handling": "labels preserved; all unique-time glucose observations weighted equally",
+    "duplicate_handling": "mean BG; sum meal and bolus amounts; preserve Noise labels",
+    "source_url": "https://raw.githubusercontent.com/emplor255/Diabetes-Control/28a82c1bdad2635396cab9c6776f71336a141ae9/Mai_Hue_24_08.csv",
+    "source_commit": "28a82c1bdad2635396cab9c6776f71336a141ae9",
+    "local_input": "extra_experiment/data/Mai_Hue_24_08.csv",
+    "sha256": "5e844af7dd1b4a5ebf062ccef8750b53fed8dcc18fb550f8fb3dbff78c6472c1",
+    "source_filename": "Mai_Hue_24_08.csv",
+    "provenance_note": "URL identifies intended source; local SHA256 identifies exact bytes used",
+    "config": {
+      "seed": 20261026,
+      "fit_starts": 4,
+      "fit_max_nfev": 200,
+      "insulin_absorption_per_hour": 1.0,
+      "control_bin_minutes": 60.0,
+      "control_max": 10.0,
+      "control_penalty": 1.0,
+      "control_maxiter": 80,
+      "rtol": 1e-06,
+      "atol": 1e-08
+    }
+  },
+  "case_02": {
+    "raw_rows": 15,
+    "unique_times": 15,
+    "duplicate_rows_collapsed": 0,
+    "duration_min": 345.0,
+    "largest_gap_min": 60.0,
+    "recorded_meal_events": 3,
+    "recorded_bolus_events": 3,
+    "total_eating_native_units": 29.700000000000003,
+    "total_bolus_native_units": 29.0,
+    "noise_counts_raw": {
+      "N": 15
+    },
+    "reference_glucose": 65.0,
+    "reference_rule": "first BG; no premeal baseline available",
+    "premeal_baseline_points": 0,
+    "observations_below_70": 2,
+    "bg_unit_assumption": "mg/dL, pending source-owner confirmation",
+    "input_units": "native CSV amounts; no grams/U conversion asserted",
+    "noise_handling": "labels preserved; all unique-time glucose observations weighted equally",
+    "duplicate_handling": "mean BG; sum meal and bolus amounts; preserve Noise labels",
+    "source_url": "https://raw.githubusercontent.com/emplor255/Diabetes-Control/28a82c1bdad2635396cab9c6776f71336a141ae9/patient.csv",
+    "source_commit": "28a82c1bdad2635396cab9c6776f71336a141ae9",
+    "local_input": "extra_experiment/data/patient.csv",
+    "sha256": "cc2d16657e9b92a91ad9609f87c1591ac511c8b72ac5668c5d20e5e9dcf86e4f",
+    "source_filename": "patient.csv",
+    "provenance_note": "URL identifies intended source; local SHA256 identifies exact bytes used",
+    "config": {
+      "seed": 20261026,
+      "fit_starts": 4,
+      "fit_max_nfev": 200,
+      "insulin_absorption_per_hour": 1.0,
+      "control_bin_minutes": 60.0,
+      "control_max": 10.0,
+      "control_penalty": 1.0,
+      "control_maxiter": 80,
+      "rtol": 1e-06,
+      "atol": 1e-08
+    }
+  }
+}

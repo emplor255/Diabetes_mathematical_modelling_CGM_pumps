@@ -1,0 +1,13 @@
+parameter,contrast,statistic,p_value,p_value_bh
+alpha,Kruskal-Wallis: all 3 groups,2.0,0.36787944117144245,0.735758882342885
+alpha,Mann-Whitney: healthy vs dysglycemia,0.0,0.6666666666666666,0.8
+beta0,Kruskal-Wallis: all 3 groups,2.0,0.36787944117144245,0.735758882342885
+beta0,Mann-Whitney: healthy vs dysglycemia,1.0,1.0,1.0
+beta1,Kruskal-Wallis: all 3 groups,2.0,0.36787944117144245,0.735758882342885
+beta1,Mann-Whitney: healthy vs dysglycemia,2.0,0.6666666666666666,0.8
+beta2_derived,Kruskal-Wallis: all 3 groups,2.0,0.36787944117144245,0.735758882342885
+beta2_derived,Mann-Whitney: healthy vs dysglycemia,1.0,1.0,1.0
+gamma,Kruskal-Wallis: all 3 groups,2.0,0.36787944117144245,0.735758882342885
+gamma,Mann-Whitney: healthy vs dysglycemia,0.0,0.6666666666666666,0.8
+delta,Kruskal-Wallis: all 3 groups,2.0,0.36787944117144245,0.735758882342885
+delta,Mann-Whitney: healthy vs dysglycemia,0.0,0.6666666666666666,0.8

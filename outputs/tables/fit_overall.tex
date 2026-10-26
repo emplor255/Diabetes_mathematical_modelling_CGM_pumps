@@ -1,0 +1,31 @@
+% Requires booktabs and graphicx.
+\begin{table}[htbp]
+\centering
+\caption{Overall in-sample goodness of fit across all fitted participants and meals.}
+\label{tab:fit-overall}
+\small
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrr}
+\toprule
+Outcome & Proposed 3-state & Reduced 2-state \\
+\midrule
+Participants & 30 & 30 \\
+Meal windows & 147 & 147 \\
+CGM observations & 4,452 & 4,452 \\
+Pooled RMSE (mg/dL) & 10.83 & 11.26 \\
+Pooled MAE (mg/dL) & 7.00 & 7.33 \\
+Participant RMSE, median [Q1, Q3] & 9.14 [7.72, 10.97] & 9.71 [7.88, 11.38] \\
+Participant MAE, median [Q1, Q3] & 6.53 [5.17, 7.65] & 7.35 [5.21, 7.85] \\
+Within-event $R^2$ & 0.665 & 0.638 \\
+Event $R^2$, median [Q1, Q3] & 0.615 [0.287, 0.853] & 0.612 [0.280, 0.819] \\
+Events with $R^2$ $<$ 0 & 22/147 & 24/147 \\
+Lower participant RMSE & 22/30 & 8/30 \\
+Lower nominal AIC & 17/30 & 13/30 \\
+Lower nominal BIC & 14/30 & 16/30 \\
+\bottomrule
+\end{tabular}}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize
+All fitted participants and meal windows are included, with no outcome-based exclusions. Errors are unweighted and in-sample at the observed times ($t\geq0$); the meal-time observation also informs model initialization. Pooled RMSE and MAE weight observations equally; participant summaries weight people equally. Within-event $R^2=1-\sum_e\mathrm{SSE}_e/\sum_e\sum_t(G_{et}-\bar G_e)^2$, which removes between-event baseline differences. Event summaries include negative $R^2$ values; constant-glucose events have undefined $R^2$. Q1 and Q3 are quartiles, not confidence bounds. Lower-metric counts compare the two models within each participant. AIC/BIC are nominal residual-based criteria from the original fit, without a serial-correlation correction. These are training fits, not held-out validation.
+\end{minipage}
+\end{table}

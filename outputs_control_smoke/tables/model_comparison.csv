@@ -1,0 +1,3 @@
+userID,status,model,states,shared_kinetic_parameters,event_nuisance_parameters,n_observations,sse,rmse,aic,bic,stage1_mse,optimizer_success
+2133-001,Healthy,Proposed 3-state,3,5,12,178,7411.85998187657,6.452880195659245,697.7714600236578,751.8617803786233,1.7858183408962136,False
+2133-001,Healthy,Reduced 2-state,2,2,12,178,8211.193013126775,6.791928873785039,710.0016517752081,754.5466214792973,16.361307941542545,False

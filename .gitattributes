@@ -1,0 +1,2 @@
+# Preserve downloaded CSV bytes (including source CRLF) for SHA256 provenance.
+extra_experiment/data/*.csv -text whitespace=cr-at-eol

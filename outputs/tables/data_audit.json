@@ -1,0 +1,50 @@
+{
+  "hall_rows": 105417,
+  "hall_participants": 57,
+  "hall_healthy_participants": 38,
+  "hall_prediabetes_participants": 14,
+  "hall_type2_participants": 5,
+  "hall_sex_nonmissing_rows": 0,
+  "hall_insulin_modality_nonmissing_rows": 0,
+  "meal_input_rows": 6152,
+  "meal_censored_low_rows": 6,
+  "meal_invalid_required_rows": 0,
+  "meal_unrecognized_glucose_rows": 0,
+  "meal_duplicate_rows_collapsed": 87,
+  "meal_unique_points": 6065,
+  "meal_events_total": 176,
+  "meal_events_usable": 147,
+  "meal_events_excluded": 29,
+  "meal_participants_total": 30,
+  "meal_participants_with_usable_event": 30,
+  "fit_participants": 30,
+  "fit_events": 147,
+  "fit_observations": 4452,
+  "seed": 20260815,
+  "workers": 4,
+  "fit_config": {
+    "seed": 20260815,
+    "stage1_iterations": 12,
+    "stage1_popsize": 5,
+    "stage2_max_nfev": 180,
+    "smoothing_sd_mg_dl": 3.0,
+    "observation_sd_mg_dl": 5.0,
+    "log_prior_sd": 4.0,
+    "model": {
+      "k_half_mg_dl": 120.0,
+      "basal_insulin": 1.0,
+      "target_lower_mg_dl": 70.0,
+      "target_upper_mg_dl": 110.0
+    }
+  },
+  "control_config": {
+    "horizon_hours": 2.5,
+    "integration_step_minutes": 1.0,
+    "control_bin_minutes": 15.0,
+    "max_control_intensity": 10.0,
+    "control_penalty": 1.0,
+    "optimizer_maxiter": 60
+  },
+  "command_cwd": "/cluster/tufts/aeronlab/nnguye25/diabetes",
+  "cpu_count_visible": 64
+}

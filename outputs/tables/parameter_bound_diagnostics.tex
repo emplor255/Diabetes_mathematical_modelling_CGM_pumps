@@ -1,0 +1,24 @@
+% Requires booktabs and graphicx.
+\begin{table}[htbp]
+\centering
+\caption{Boundary diagnostics for participant-level kinetic estimates.}
+\label{tab:parameter-bound-diagnostics}
+\small
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+Parameter & Search interval & Healthy & Prediabetes & Type 2 diabetes \\
+\midrule
+$\alpha$ & [0.05, 10] & 0/1 of 20 & 0/0 of 7 & 0/0 of 3 \\
+$\beta_0$ & [0.0001, 2] & 15/0 of 20 & 7/0 of 7 & 2/0 of 3 \\
+$\beta_1$ & [1e-06, 1] & 0/2 of 20 & 0/0 of 7 & 0/0 of 3 \\
+$\beta_2$ (derived) & Derived & -- & -- & -- \\
+$\gamma$ & [0.001, 10] & 0/14 of 20 & 0/5 of 7 & 0/2 of 3 \\
+$\delta$ & [0.05, 10] & 0/1 of 20 & 0/0 of 7 & 0/0 of 3 \\
+\bottomrule
+\end{tabular}}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize
+Entries are lower/upper boundary counts out of the group size. A value is near a bound when its distance is less than 0.5\% of the full search-interval width, matching the fitting pipeline. These counts denote proximity, not necessarily exact optimizer contact. The equilibrium-derived $\beta_2$ has no independently optimized search interval.
+\end{minipage}
+\end{table}

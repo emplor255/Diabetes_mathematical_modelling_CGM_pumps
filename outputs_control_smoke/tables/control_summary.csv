@@ -1,0 +1,3 @@
+userID,status,scenario,optimizer_success,paper_objective,total_control_intensity,mean_glucose,min_glucose,peak_glucose,time_70_110_pct,time_below_70_pct,time_above_110_pct
+2133-001,Healthy,No external control,False,-455.18819675600656,0.0,91.41411388979544,82.0,102.15262243951895,100.0,0.0,0.0
+2133-001,Healthy,Optimized unitless control,False,-480.44979840710914,0.7664933416181635,87.66305797533911,81.03527826451096,91.3879158911642,100.0,0.0,0.0

@@ -1,0 +1,24 @@
+% Requires booktabs and graphicx.
+\begin{table}[htbp]
+\centering
+\caption{Participant-level kinetic estimates by clinical status (Healthy: n=20, Prediabetes: n=7, Type 2 diabetes: n=3).}
+\label{tab:parameter-group-comparison}
+\small
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+Parameter & Healthy & Prediabetes & Type 2 diabetes & T2D - Healthy median \\
+\midrule
+$\alpha$ & 2.79 [0.899, 4.65] & 1.3 [0.654, 1.75] & 1.49 [1.25, 3.31] & -1.3 \\
+$\beta_0$ & 0.0001 [0.0001, 0.016] & 0.0001 [0.0001, 0.000101] & 0.000105 [0.000103, 0.0117] & +4.54e-06 \\
+$\beta_1$ & 0.526 [0.43, 0.742] & 0.228 [0.152, 0.364] & 0.195 [0.132, 0.345] & -0.331 \\
+$\beta_2$ (derived) & 470 [260, 608] & 386 [298, 556] & 704 [485, 751] & +234 \\
+$\gamma$ & 9.99 [9.82, 10] & 10 [9.8, 10] & 10 [9.64, 10] & +0.00493 \\
+$\delta$ & 2.91 [1.38, 6.82] & 1.79 [0.968, 1.94] & 1.4 [0.936, 3.2] & -1.52 \\
+\bottomrule
+\end{tabular}}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize
+Entries are participant-level medians [Q1, Q3], not confidence intervals. The final column is the T2D median minus the Healthy median; prediabetes is not pooled with T2D. $\beta_2$ is derived from the equilibrium constraint, not independently fitted. Time is measured in hours; $\alpha,\beta_0,\delta$ have units h$^{-1}$; $\beta_1$ has units (model insulin unit $\times$ h)$^{-1}$; $\gamma$ has units model insulin unit/h; and $\beta_2$ has units mg/dL/h under the dimensionless-insulin convention. Insulin is not calibrated to clinical units. Small subgroup sizes and frequent boundary estimates limit interpretation; see the boundary-diagnostic table. Differences are descriptive, not hypothesis tests or proof of physiological differences; no p-values are claimed.
+\end{minipage}
+\end{table}

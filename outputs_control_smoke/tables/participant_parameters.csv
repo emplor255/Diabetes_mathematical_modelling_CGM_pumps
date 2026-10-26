@@ -1,0 +1,2 @@
+userID,type_code,status,age,n_events,n_observations,reference_glucose,alpha,beta0,beta1,beta2_derived,gamma,delta,median_meal_amplitude,median_absorption_delay_min,stage1_mse,rmse_proposed,rmse_reduced,jacobian_condition_number,kinetic_bound_hits,optimizer_success,optimizer_status,optimizer_nfev
+2133-001,0.0,Healthy,27.0,6,178,82.0,0.7025099386521376,0.00010240742260258373,0.5172468143589034,601.877466400048,9.985609375907869,1.3820000535874555,122.11438514905444,6.186859419530086,1.7858183408962136,6.452880195659245,6.791928873785039,137.89899687776384,2,False,0,25
