@@ -1,5 +1,5 @@
 start,cost,success,nfev,status,message
-1,737.717745514504,False,200,0,The maximum number of function evaluations is exceeded.
-2,737.6930732425753,True,34,2,`ftol` termination condition is satisfied.
-3,737.7042949062889,True,154,2,`ftol` termination condition is satisfied.
-4,737.7030884779923,True,53,2,`ftol` termination condition is satisfied.
+1,12.275959103513813,True,46,2,`ftol` termination condition is satisfied.
+2,12.275959061759114,True,54,2,`ftol` termination condition is satisfied.
+3,12.276601751721188,True,54,2,`ftol` termination condition is satisfied.
+4,12.275971822653876,True,58,2,`ftol` termination condition is satisfied.

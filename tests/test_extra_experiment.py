@@ -12,7 +12,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from extra_experiment.experiment import (
-    ExperimentConfig, control_cost, grid_for, optimize_control, prepare_record, simulate, time_fraction,
+    ExperimentConfig, control_cost, fit_record, grid_for, optimize_control, prepare_record, simulate, time_fraction,
 )
 from diabetes_paper.model import ModelConfig, simulate_meal
 
@@ -126,9 +126,108 @@ class ExtraExperimentTests(unittest.TestCase):
             self.assertIn(r"Below (\%)", content)
             self.assertIn(r"\bottomrule", content)
 
+    def test_case01_control_display_does_not_change_trajectory(self):
+        from extra_experiment.run_experiment import plot_control_case, plt
+        curves = pd.DataFrame({"scenario": ["Recorded boluses only"] * 4 +
+                               ["Recorded boluses + optimized unitless control"] * 4,
+                               "time_min": [0, 30, 60, 90] * 2,
+                               "glucose": [100, 130, 120, 110, 100, 120, 110, 100],
+                               "control": [0] * 4 + [1] * 4})
+        original = curves.copy(deep=True)
+        with tempfile.TemporaryDirectory() as folder:
+            with patch("extra_experiment.run_experiment.plt.close"):
+                plot_control_case(self.record, curves, "case_01", Path(folder))
+                fig = plt.gcf()
+                labels = fig.axes[0].get_legend_handles_labels()[1]
+                self.assertIn("Conventionally calculated boluses", labels)
+                self.assertIn("Optimized control", labels)
+                self.assertIn("Displayed target: 70–130", labels)
+                band = fig.axes[0].patches[0]
+                screen = band.get_transform().transform(band.get_path().vertices)
+                vertices = fig.axes[0].transData.inverted().transform(screen)[:, 1]
+                np.testing.assert_allclose((vertices.min(), vertices.max()), (70, 130))
+                self.assertIn("optimization objective unchanged", fig.axes[1].get_xlabel())
+            plt.close(fig)
+            self.assertTrue((Path(folder) / "case_01_control.pdf").exists())
+        pd.testing.assert_frame_equal(curves, original)
+
+    def test_first_meal_window_preserves_duplicates_and_excludes_next_meal(self):
+        from extra_experiment.run_experiment import select_analysis_window
+        raw = pd.DataFrame({"Timestamp": ["05:00", "06:00", "06:30", "06:30", "07:00", "08:00", "09:00"],
+                            "BG": [100.] * 7, "Eating": [0., 0., 20., 0., 0., 30., 0.],
+                            "Insulin Bolus": [0., 0., 0., 2., 1., 3., 0.], "Noise": ["N"] * 7})
+        selected, audit = select_analysis_window(raw, "case_01")
+        self.assertEqual(selected.Timestamp.tolist(), ["06:00", "06:30", "06:30", "07:00"])
+        self.assertEqual(audit["mode"], "first_meal")
+        clean, _ = prepare_record(selected)
+        self.assertEqual(clean.eating.sum(), 20.)
+        self.assertEqual(clean.bolus.sum(), 3.)
+        # The cutoff must not change with the shape of the observed glucose trace.
+        raw["BG"] = np.arange(7) * 40. + 70.
+        changed, changed_audit = select_analysis_window(raw, "case_01")
+        self.assertEqual(changed_audit, audit)
+        self.assertEqual(changed.Timestamp.tolist(), selected.Timestamp.tolist())
+        full, full_audit = select_analysis_window(raw, "case_02")
+        pd.testing.assert_frame_equal(full, raw)
+        self.assertEqual(full_audit["mode"], "full_record")
+        full, _ = select_analysis_window(raw, "case_01", "full_record")
+        pd.testing.assert_frame_equal(full, raw)
+
+    def test_actual_first_meal_window(self):
+        from extra_experiment.run_experiment import select_analysis_window
+        path = ROOT / "extra_experiment/data/Mai_Hue_24_08.csv"
+        if not path.exists():
+            self.skipTest("Source CSV not downloaded")
+        selected, selection = select_analysis_window(pd.read_csv(path), "case_01")
+        clean, audit = prepare_record(selected)
+        self.assertEqual((selection["actual_start_clock"], selection["actual_end_clock"]), ("06:29", "09:24"))
+        self.assertEqual((len(selected), len(clean)), (30, 29))
+        self.assertEqual((audit["recorded_meal_events"], audit["recorded_bolus_events"]), (1, 3))
+        self.assertEqual(audit["largest_gap_min"], 40.)
+
+    def test_invalid_fit_options_fail_before_optimization(self):
+        for config in [ExperimentConfig(fit_loss="unknown"), ExperimentConfig(fit_start_strategy="unknown")]:
+            with self.assertRaises(ValueError):
+                fit_record(self.record, 100., config)
+
+    def test_profile_keeps_beta1_fixed_and_reports_all_starts(self):
+        from extra_experiment.profile_case02 import fit_at_beta1
+        from types import SimpleNamespace
+        def no_optimization(fun, x0, **kwargs):
+            residual = fun(x0)
+            return SimpleNamespace(x=x0, cost=float(np.sum(np.sqrt(1 + residual**2) - 1)),
+                                   success=True, nfev=1, message="test fixture")
+        beta1 = .01
+        with patch("extra_experiment.profile_case02.least_squares", side_effect=no_optimization):
+            p, row, runs = fit_at_beta1(self.record, 100., beta1,
+                                       [self.parameters, self.parameters], ExperimentConfig())
+        self.assertEqual(p[2], beta1)
+        self.assertEqual(row["beta1"], beta1)
+        self.assertTrue(all(run["beta1"] == beta1 for run in runs))
+        self.assertEqual(len(runs), 2)
+        self.assertGreaterEqual(row["max_BG_change_at_u10"], 0.)
+        with self.assertRaises(ValueError):
+            fit_at_beta1(self.record, 100., 0., [self.parameters], ExperimentConfig())
+
 
 @unittest.skipUnless((ROOT / "extra_experiment/results/fit_summary.csv").exists(), "Run extra experiment first")
 class SavedExtraExperimentTests(unittest.TestCase):
+    def test_saved_tuning_profiles_and_original_bounds(self):
+        from extra_experiment.experiment import BOUNDS, NAMES
+        path = ROOT / "extra_experiment/tuning/case02_beta1_profile.csv"
+        if not path.exists():
+            self.skipTest("Run case02 profile first")
+        profile = pd.read_csv(path)
+        np.testing.assert_allclose(profile.fixed_beta1, [1e-6, 1e-5, 1e-4, 1e-3, 1e-2, .1])
+        np.testing.assert_allclose(profile.beta1, profile.fixed_beta1)
+        values = profile[list(NAMES)].to_numpy()
+        self.assertTrue(np.all(values >= BOUNDS[:, 0] * (1 - 1e-8)))
+        self.assertTrue(np.all(values <= BOUNDS[:, 1] * (1 + 1e-8)))
+        runs = pd.read_csv(path.with_name("case02_beta1_profile_multistart.csv"))
+        self.assertTrue(runs.groupby("fixed_beta1").size().eq(3).all())
+        for row in profile.itertuples():
+            self.assertAlmostEqual(row.robust_cost, runs.loc[np.isclose(runs.fixed_beta1, row.fixed_beta1), "cost"].min())
+
     def test_saved_metrics_inputs_and_comparators(self):
         output = ROOT / "extra_experiment/results"
         audits = json.loads((output / "data_audit.json").read_text())

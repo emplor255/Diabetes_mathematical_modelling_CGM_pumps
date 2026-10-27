@@ -1,4 +1,4 @@
-# Additional full-record experiments
+# Additional recorded-input experiments
 
 Research simulations only. No insulin dosing recommendation or clinical efficacy claim.
 
@@ -6,32 +6,38 @@ Research simulations only. No insulin dosing recommendation or clinical efficacy
 
 | Case | Rows / unique times | Meals / boluses | Max gap (min) | Reference BG |
 |---|---:|---:|---:|---:|
-| case_01 | 202 / 201 | 5 / 26 | 60 | 79 |
+| case_01 | 30 / 29 | 1 / 3 | 40 | 79 |
 | case_02 | 15 / 15 | 3 / 3 | 60 | 65 |
 
-## In-sample fit (all recorded times, one parameter vector per case)
+## Analysis windows
+
+- case_01: first_meal, 06:29–09:24; 30 of 202 source rows. First meal: 06:58.
+  Fit loss: soft_l1; 4 starts (local); max evaluations/start: 200.
+- case_02: full_record, 07:30–13:15; 15 of 15 source rows. First meal: 07:30.
+  Fit loss: linear; 8 starts (mixed); max evaluations/start: 500.
+- The first-meal window is selected by logged Eating times, not glucose values or fit quality. No endpoints or missing observations are interpolated. Its fit metrics do not evaluate the rest of the day and are not directly comparable with full-day scores.
+
+## In-sample fit (all times within each analysis window, one parameter vector per case)
 
 | Case | N | RMSE | MAE | R² | Optimizer success |
 |---|---:|---:|---:|---:|---|
-| case_01 | 201 | 31.897 | 22.135 | -0.336 | True |
-| case_02 | 15 | 7.230 | 5.692 | 0.844 | True |
+| case_01 | 29 | 6.490 | 3.993 | 0.979 | True |
+| case_02 | 15 | 7.164 | 5.761 | 0.847 | True |
 
 ## Paired simulations with the same recorded meals and boluses
 
 | Case / scenario | Objective | Peak BG | Min BG | Time 70–110 (%) | Below 70 (%) |
 |---|---:|---:|---:|---:|---:|
-| case_01 / Recorded boluses only | 7659.72 | 147.23 | 84.48 | 42.51 | 0.00 |
-| case_01 / Recorded boluses + optimized unitless control | -2703.98 | 107.17 | 68.76 | 99.43 | 0.57 |
-| case_02 / Recorded boluses only | -267.90 | 122.22 | 65.00 | 59.41 | 1.89 |
-| case_02 / Recorded boluses + optimized unitless control | -267.91 | 122.22 | 65.00 | 59.41 | 1.89 |
+| case_01 / Recorded boluses only | 7866.11 | 209.00 | 79.00 | 19.71 | 0.00 |
+| case_01 / Recorded boluses + optimized unitless control | 5381.42 | 197.56 | 76.94 | 20.02 | 0.00 |
+| case_02 / Recorded boluses only | -335.51 | 121.05 | 65.00 | 62.91 | 0.87 |
+| case_02 / Recorded boluses + optimized unitless control | -335.53 | 121.05 | 65.00 | 62.91 | 0.87 |
 
 ## Case-specific findings
 
-- case_01: R²=-0.336 is negative: the fitted trajectory has greater squared error than the observed-mean constant predictor. Control results from this poorly fitting model must not be presented as evidence of effectiveness.
-- case_01: data-only log-parameter Jacobian condition number 3.68e+05; inspect parameter boundaries and multistart variability before interpreting individual coefficients.
-- case_01: optimized time below 70 increases by 0.567157 percentage points despite a lower objective. The paper objective does not enforce a safety constraint.
-- case_02: data-only log-parameter Jacobian condition number 1.3e+08; inspect parameter boundaries and multistart variability before interpreting individual coefficients.
-- case_02: optimized time below 70 increases by 0.000319 percentage points despite a lower objective. The paper objective does not enforce a safety constraint.
+- case_01: data-only log-parameter Jacobian condition number 2.82e+08; inspect parameter boundaries and multistart variability before interpreting individual coefficients.
+- case_02: data-only log-parameter Jacobian condition number 4.21e+08; inspect parameter boundaries and multistart variability before interpreting individual coefficients.
+- case_02: optimized time below 70 increases by 0.000083 percentage points despite a lower objective. The paper objective does not enforce a safety constraint.
 - case_02: objective improvement is less than 0.1 in its native units; the two simulated glucose curves are essentially coincident. No meaningful clinical benefit can be inferred.
 
 ## Interpretation and limitations

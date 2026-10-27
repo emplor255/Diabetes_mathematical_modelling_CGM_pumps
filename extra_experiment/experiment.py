@@ -21,6 +21,8 @@ class ExperimentConfig:
     seed: int = 20261026
     fit_starts: int = 4
     fit_max_nfev: int = 200
+    fit_start_strategy: str = "local"
+    fit_loss: str = "soft_l1"
     insulin_absorption_per_hour: float = 1.0
     control_bin_minutes: float = 60.0
     control_max: float = 10.0
@@ -154,6 +156,8 @@ def fit_record(record, reference, config=None):
     cfg = config or ExperimentConfig()
     if cfg.fit_starts < 1:
         raise ValueError("At least one fit start is required")
+    if cfg.fit_start_strategy not in {"local", "mixed"} or cfg.fit_loss not in {"soft_l1", "linear"}:
+        raise ValueError("Unknown initialization strategy or fit loss")
     times = record.time_min.to_numpy() / 60.0
     observed = record.glucose.to_numpy()
     lower, upper = np.log(BOUNDS[:, 0]), np.log(BOUNDS[:, 1])
@@ -162,18 +166,27 @@ def fit_record(record, reference, config=None):
     starts = [np.log(nominal)] + [np.clip(np.log(nominal) + rng.normal(0, 1.4, 7),
                                          lower + 1e-8, upper - 1e-8)
                                     for _ in range(cfg.fit_starts - 1)]
+    if cfg.fit_start_strategy == "mixed":
+        # Retain the original local starts, then explore the entire log-bound box.
+        # This changes optimization coverage, not data, model, bounds, or control.
+        for index in range(max(4, cfg.fit_starts // 2), cfg.fit_starts):
+            starts[index] = rng.uniform(lower + 1e-8, upper - 1e-8)
 
     def residual(log_p):
         return (simulate(record, reference, np.exp(log_p), times, cfg)[:, 1] - observed) / 5.
 
     runs, candidates = [], []
     for number, start in enumerate(starts):
-        fit = least_squares(residual, start, bounds=(lower, upper), loss="soft_l1",
+        fit = least_squares(residual, start, bounds=(lower, upper), loss=cfg.fit_loss,
                             f_scale=1., max_nfev=cfg.fit_max_nfev, diff_step=1e-4,
                             xtol=1e-7, ftol=1e-7, gtol=1e-7)
         candidates.append(fit)
-        runs.append({"start": number + 1, "cost": float(fit.cost), "success": bool(fit.success),
-                     "nfev": int(fit.nfev), "status": int(fit.status), "message": fit.message})
+        run = {"start": number + 1, "cost": float(fit.cost), "success": bool(fit.success),
+               "nfev": int(fit.nfev), "status": int(fit.status), "message": fit.message,
+               "rmse": float(np.sqrt(np.mean((5 * fit.fun)**2))), "loss": cfg.fit_loss}
+        run.update(dict(zip(NAMES, map(float, np.exp(fit.x)))))
+        run.update({f"initial_{name}": float(value) for name, value in zip(NAMES, np.exp(start))})
+        runs.append(run)
         print(f"  fit start {number + 1}: cost={fit.cost:.3f}, success={fit.success}, nfev={fit.nfev}", flush=True)
     selected = min(range(len(candidates)), key=lambda i: candidates[i].cost)
     best = candidates[selected]

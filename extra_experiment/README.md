@@ -1,4 +1,4 @@
-# Two additional full-record experiments
+# Two additional recorded-input experiments
 
 These exploratory experiments use `Mai_Hue_24_08.csv` (`case_01`) and `patient.csv`
 (`case_02`) from [emplor255/Diabetes-Control](https://github.com/emplor255/Diabetes-Control),
@@ -13,6 +13,7 @@ From the project root, using the existing environment:
 
 ```bash
 .venv/bin/python extra_experiment/run_experiment.py --download
+.venv/bin/python extra_experiment/run_experiment.py --cases case_02 --fit-starts 8 --fit-max-nfev 500 --fit-start-strategy mixed --fit-loss linear
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
@@ -20,11 +21,44 @@ From the project root, using the existing environment:
 local inputs. Every input's SHA256 is saved in `results/data_audit.json`. Subsequent
 runs can omit `--download`. `--reuse-fits` skips fitting only when the saved input
 hash and configuration match exactly; it reruns the control and export stages.
+The selected analysis window must also match the cached fit. The second command
+above applies the documented case_02 RMSE-oriented retune after the default run.
+
+## Analysis windows
+
+By default **case_01 uses only the first meal phase**: from 30 minutes before to
+150 minutes after the first positive `Eating` timestamp, stopping before the next
+meal if it occurs earlier. The first meal is at **06:58**. The available observations
+in this window span **06:29–09:24** (30 source rows, 29 unique times), including one
+meal and three boluses. The actual endpoints are -29 and +146 minutes relative to
+the meal; no observations at the nominal endpoints are manufactured. The existing
+40-minute gap is retained, not filled. Window selection uses meal times only,
+not glucose values or fit scores. The original input CSV is unchanged.
+
+**case_02 still uses its full 07:30–13:15 record.** To update case_01 without
+refitting or rewriting the saved case_02 artifacts (requires existing summaries):
+
+```bash
+.venv/bin/python extra_experiment/run_experiment.py --cases case_01
+```
+
+The combined summary tables/report are updated to include the new case_01 and
+the unchanged case_02. To reproduce the earlier full-day case_01 experiment in a
+separate destination:
+
+```bash
+.venv/bin/python extra_experiment/run_experiment.py --case01-window full_record --output extra_experiment/results_full_record
+```
+
+The original full-record results are also preserved in Git commit `72236b2`.
+Scores on a short selected phase are not scores for the entire day and cannot be
+compared directly with whole-day scores as evidence of method improvement.
 
 ## What is fitted?
 
 One continuous trajectory and **one seven-parameter vector per case**, using all
-distinct recorded times, rather than treating each meal as an independent reset:
+distinct recorded times **inside the selected window**, rather than treating each
+meal as an independent reset:
 
 - Paper coefficients: alpha, beta0, beta1, gamma, delta (original fitting bounds).
 - Effective meal gain (0.01–30) and bolus gain (0.0001–30), in native input units.
@@ -55,8 +89,10 @@ dose, previous insulin-on-board, or earlier meals are known. In particular,
 `patient.csv` starts at BG=65 with an eating/bolus event and lacks a premeal baseline.
 
 The fit uses multistart bounded nonlinear least squares in log parameters with
-soft-L1 loss and residual scale 5 mg/dL. There is no parameter averaging across
-meals, no discarded poor-fit segments, and no imputed observations. At duplicate
+soft-L1 loss by default and residual scale 5 mg/dL. `--fit-loss linear` instead
+minimizes ordinary squared residuals (and hence RMSE); the chosen loss is recorded
+per case in the audit. There is no parameter averaging across
+meals, no fit-quality-based exclusion within a selected window, and no imputed observations. At duplicate
 times BG is averaged and input amounts are summed; Noise labels are retained with
 equal observation weights. Fit diagnostics include all multistart outcomes,
 bound proximity, and the data-only finite-difference Jacobian condition number.
@@ -91,3 +127,40 @@ There is no held-out validation, clinical efficacy inference, uncertainty
 propagation, or significance test between two cases. The fitted gains and assumed
 bolus absorption do not calibrate the dimensionless control to therapeutic insulin.
 The main Hall2018 code/results are unchanged by this experiment.
+
+## Case 02 retuning and identifiability check
+
+The case_02 retune retains all 15 observations and the original parameter bounds,
+K, reference BG, bolus absorption, and control settings. First, 16 mixed local and
+log-uniform starts with soft-L1 loss check for missed minima. Then 8 mixed starts
+with ordinary least squares target RMSE directly. `--fit-max-nfev 500` allows more
+iterations. The lowest loss within each trial is selected; control responsiveness
+is never used to rank fitted parameter vectors. Ordinary least squares is less
+robust to outliers; in-sample improvement is not predictive validation.
+
+```bash
+# Retuned RMSE-oriented fit/control for case_02; case_01 artifacts are untouched.
+.venv/bin/python extra_experiment/run_experiment.py --cases case_02 --fit-starts 8 --fit-max-nfev 500 --fit-start-strategy mixed --fit-loss linear
+# Conditional robustness diagnostic (separate from the main fitting artifacts):
+.venv/bin/python extra_experiment/profile_case02.py
+```
+
+`tuning/case02_before/` preserves the original 4-start results and
+`tuning/case02_robust_multistart/` preserves the 16-start robust results. The tuning
+report and before/after table are in `tuning/`. The beta1 profile fixes beta1 at
+six values, refits the other six parameters with soft-L1 loss from three starts,
+and compares model responses to **constant dimensionless u=10**. This is neither
+a confidence interval nor an optimized or clinically calibrated dosing experiment.
+Profile fits never replace the main fit. `--summarize-only` regenerates the tuning
+report/figure using saved profile results and the current main fit.
+
+## Case 01 control-figure presentation
+
+At the owner's request, the case_01 control figure displays a **70–130 mg/dL**
+target band and labels the comparator **Conventionally calculated boluses** (and
+the second curve **Optimized control**).
+These are presentation-only changes: the input boluses remain the logged CSV
+values; no traditional bolus-calculation formula is supplied or verified here.
+The optimization objective and exported time-in-range metrics remain **70–110**,
+as explicitly noted on the figure. The red dashed 70 line remains a separate
+reference. Case_02 labels/range and all simulated trajectories are unchanged.

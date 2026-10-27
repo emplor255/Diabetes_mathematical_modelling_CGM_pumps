@@ -1,8 +1,8 @@
 parameter,estimate,lower,upper,near_lower_0_5pct,near_upper_0_5pct
-alpha,2.183607723991278,0.05,10.0,False,False
-beta0,0.00018723106864312417,0.0001,2.0,True,False
-beta1,0.017176366394098034,1e-06,1.0,False,False
-gamma,5.2457716955768126,0.001,10.0,False,False
-delta,0.4948016203346482,0.05,10.0,False,False
-meal_gain,0.7661034226379607,0.01,30.0,False,False
-bolus_gain,0.00011805740531772724,0.0001,30.0,True,False
+alpha,0.39054491245219586,0.05,10.0,False,False
+beta0,0.00010000029420153137,0.0001,2.0,True,False
+beta1,0.02163052291890374,1e-06,1.0,False,False
+gamma,0.001000001498999524,0.001,10.0,True,False
+delta,1.0349055137670462,0.05,10.0,False,False
+meal_gain,29.99999980889567,0.01,30.0,False,True
+bolus_gain,29.999853802924164,0.0001,30.0,False,True

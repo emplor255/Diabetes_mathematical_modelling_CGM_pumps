@@ -1,0 +1,5 @@
+start,cost,success,nfev,status,message
+1,9.182613384632084,True,37,2,`ftol` termination condition is satisfied.
+2,11.716524627244018,True,191,2,`ftol` termination condition is satisfied.
+3,11.716338996568359,True,167,2,`ftol` termination condition is satisfied.
+4,9.182642195408956,True,36,2,`ftol` termination condition is satisfied.

@@ -1,17 +1,17 @@
 {
   "case_01": {
-    "raw_rows": 202,
-    "unique_times": 201,
+    "raw_rows": 30,
+    "unique_times": 29,
     "duplicate_rows_collapsed": 1,
-    "duration_min": 1075.0,
-    "largest_gap_min": 60.0,
-    "recorded_meal_events": 5,
-    "recorded_bolus_events": 26,
-    "total_eating_native_units": 196.0,
-    "total_bolus_native_units": 28.4,
+    "duration_min": 175.0,
+    "largest_gap_min": 40.0,
+    "recorded_meal_events": 1,
+    "recorded_bolus_events": 3,
+    "total_eating_native_units": 30.0,
+    "total_bolus_native_units": 6.7,
     "noise_counts_raw": {
-      "Y": 174,
-      "P": 28
+      "Y": 26,
+      "P": 4
     },
     "reference_glucose": 79.0,
     "reference_rule": "median in 30 min before first meal",
@@ -27,6 +27,20 @@
     "sha256": "5e844af7dd1b4a5ebf062ccef8750b53fed8dcc18fb550f8fb3dbff78c6472c1",
     "source_filename": "Mai_Hue_24_08.csv",
     "provenance_note": "URL identifies intended source; local SHA256 identifies exact bytes used",
+    "selection": {
+      "mode": "first_meal",
+      "source_rows": 202,
+      "premeal_minutes": 30,
+      "postmeal_minutes": 150,
+      "stop_before_next_meal": true,
+      "rule": "first logged meal -30 to +150 min, excluding next meal and later; no interpolated endpoints",
+      "selected_rows": 30,
+      "actual_start_clock": "06:29",
+      "actual_end_clock": "09:24",
+      "first_meal_clock": "06:58",
+      "actual_start_relative_to_meal_min": -29,
+      "actual_end_relative_to_meal_min": 146
+    },
     "config": {
       "seed": 20261026,
       "fit_starts": 4,
@@ -67,10 +81,22 @@
     "sha256": "cc2d16657e9b92a91ad9609f87c1591ac511c8b72ac5668c5d20e5e9dcf86e4f",
     "source_filename": "patient.csv",
     "provenance_note": "URL identifies intended source; local SHA256 identifies exact bytes used",
+    "selection": {
+      "mode": "full_record",
+      "source_rows": 15,
+      "selected_rows": 15,
+      "actual_start_clock": "07:30",
+      "actual_end_clock": "13:15",
+      "first_meal_clock": "07:30",
+      "actual_start_relative_to_meal_min": 0,
+      "actual_end_relative_to_meal_min": 345
+    },
     "config": {
       "seed": 20261026,
-      "fit_starts": 4,
-      "fit_max_nfev": 200,
+      "fit_starts": 8,
+      "fit_max_nfev": 500,
+      "fit_start_strategy": "mixed",
+      "fit_loss": "linear",
       "insulin_absorption_per_hour": 1.0,
       "control_bin_minutes": 60.0,
       "control_max": 10.0,

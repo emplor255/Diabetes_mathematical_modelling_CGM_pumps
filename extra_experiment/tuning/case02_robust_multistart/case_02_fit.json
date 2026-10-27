@@ -1,0 +1,57 @@
+{
+  "sha256": "cc2d16657e9b92a91ad9609f87c1591ac511c8b72ac5668c5d20e5e9dcf86e4f",
+  "config": {
+    "seed": 20261026,
+    "fit_starts": 16,
+    "fit_max_nfev": 500,
+    "fit_start_strategy": "mixed",
+    "fit_loss": "soft_l1",
+    "insulin_absorption_per_hour": 1.0,
+    "control_bin_minutes": 60.0,
+    "control_max": 10.0,
+    "control_penalty": 1.0,
+    "control_maxiter": 80,
+    "rtol": 1e-06,
+    "atol": 1e-08
+  },
+  "selection": {
+    "mode": "full_record",
+    "source_rows": 15,
+    "selected_rows": 15,
+    "actual_start_clock": "07:30",
+    "actual_end_clock": "13:15",
+    "first_meal_clock": "07:30",
+    "actual_start_relative_to_meal_min": 0,
+    "actual_end_relative_to_meal_min": 345
+  },
+  "parameters": [
+    0.3978867224571351,
+    0.7224902700944054,
+    1.000000004434732e-06,
+    0.0010014630202459503,
+    0.05000000000000003,
+    20.480880486444025,
+    19.811874740942095
+  ],
+  "summary": {
+    "alpha": 0.3978867224571351,
+    "beta0": 0.7224902700944054,
+    "beta1": 1.000000004434732e-06,
+    "gamma": 0.0010014630202459503,
+    "delta": 0.05000000000000003,
+    "meal_gain": 20.480880486444025,
+    "bolus_gain": 19.811874740942095,
+    "beta2_derived": 94.13723960923261,
+    "K_fixed_mg_dl": 120.0,
+    "reference_glucose": 65.0,
+    "n_observations": 15,
+    "n_fitted_parameters": 7,
+    "rmse": 7.229932128515889,
+    "mae": 5.692333582462003,
+    "r2": 0.8440078826308701,
+    "constant_first_BG_rmse": 34.97332316685581,
+    "optimizer_success": true,
+    "selected_start": 14,
+    "data_log_jacobian_condition": 157507054.878736
+  }
+}

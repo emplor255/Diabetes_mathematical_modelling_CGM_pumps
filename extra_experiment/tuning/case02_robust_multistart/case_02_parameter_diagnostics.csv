@@ -1,0 +1,8 @@
+parameter,estimate,lower,upper,near_lower_0_5pct,near_upper_0_5pct
+alpha,0.3978867224571351,0.05,10.0,False,False
+beta0,0.7224902700944054,0.0001,2.0,False,False
+beta1,1.000000004434732e-06,1e-06,1.0,True,False
+gamma,0.0010014630202459503,0.001,10.0,True,False
+delta,0.05000000000000003,0.05,10.0,True,False
+meal_gain,20.480880486444025,0.01,30.0,False,False
+bolus_gain,19.811874740942095,0.0001,30.0,False,False

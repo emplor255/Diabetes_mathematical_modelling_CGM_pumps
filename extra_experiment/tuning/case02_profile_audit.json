@@ -1,0 +1,31 @@
+{
+  "source_sha256": "cc2d16657e9b92a91ad9609f87c1591ac511c8b72ac5668c5d20e5e9dcf86e4f",
+  "reference_glucose": 65.0,
+  "config": {
+    "seed": 20261026,
+    "fit_starts": 4,
+    "fit_max_nfev": 500,
+    "fit_start_strategy": "local",
+    "fit_loss": "soft_l1",
+    "insulin_absorption_per_hour": 1.0,
+    "control_bin_minutes": 60.0,
+    "control_max": 10.0,
+    "control_penalty": 1.0,
+    "control_maxiter": 80,
+    "rtol": 1e-06,
+    "atol": 1e-08
+  },
+  "beta1_grid": [
+    1e-06,
+    1e-05,
+    0.0001,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "starts_per_point": 3,
+  "free_parameters_per_point": 6,
+  "loss": "soft_l1",
+  "residual_scale": 5.0,
+  "interpretation": "Conditional sensitivity only; not confidence intervals or clinical doses"
+}

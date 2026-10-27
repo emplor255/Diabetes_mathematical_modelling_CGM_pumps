@@ -22,8 +22,9 @@ manuscript artifacts. Recreate results with the commands below.
 
 ## Additional individual-record experiments
 
-`extra_experiment/` contains a separate full-record fitting and research-control
-experiment for the two CSV records from `emplor255/Diabetes-Control`. It preserves
+`extra_experiment/` contains a separate recorded-input fitting and research-control
+experiment for the two CSV records from `emplor255/Diabetes-Control`: the first-meal
+phase for case_01 and the full record for case_02. It preserves
 recorded meal and bolus events, and does not alter the Hall2018 results or core
 model. See `extra_experiment/README.md` for the explicit model extension, input
 assumptions, limitations, and reproduction commands.
